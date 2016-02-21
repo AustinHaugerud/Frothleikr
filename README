@@ -1,0 +1,47 @@
+Frothleikr
+------------------
+
+Frothleikr is a tiny serialization library I wrote for my own personal needs, due to how
+I often times found myself rewriting the same code for writing data
+in binary forms while retaining portability. 
+
+The library is very small and lightweight, and is very simple to use.
+
+What It Does Do
+-----------------
+
+-Easily create portable in memory serializations of integer types with your choice of endianness 
+
+-Easily create portable in memory serializations of IEEE754 floating point types with your choice of endianness
+
+-Easily store your serialized data into in memory buffers
+
+What It Does NOT Do
+--------------------
+
+-Serialize to non-memory targets. This means it doesn't handle file io, sending data through networks etc.
+This shouldn't be a problem for you unless you're looking for a more high level library. Once your
+data has been serialized in memory, it's a simple matter of just passing the bytes along to
+whatever your target is. 
+
+-Serialize complex types. This library is more of a serialization assitance library, than an actual
+serialization library. It makes handling primitives much more simple. When it comes to serializing
+your own complex types however, that is up to you. 
+
+Building
+-------------------
+Get Cmake (if you don't already have it)
+Use Cmake
+Use whatever Cmake generated.
+Profit
+
+The library should be able to be compiled as C and C++.
+No depedencies needed.
+
+Final Note
+-------------------
+It's important to recognize that this library is not feature heavy. It's very basic and does
+no more than what it says it does. 
+
+By looking at that the examples you should be able to quickly grasp how to use this library. 
+
