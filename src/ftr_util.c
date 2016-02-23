@@ -25,7 +25,7 @@
  */
 
 
-#include"ftr_util.h"
+#include<ftr_util.h>
 #include<stdint.h>
 
 int ftr_is_bendian(void) {

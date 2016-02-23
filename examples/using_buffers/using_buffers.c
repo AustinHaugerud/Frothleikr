@@ -25,7 +25,7 @@
  */
 
 
-#include"../../frothleikr.h"
+#include<frothleikr.h>
 #include<stdio.h>
 
 int main(void) {
