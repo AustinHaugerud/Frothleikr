@@ -43,6 +43,8 @@ struct ftr_io_buffer * ftr_create_buffer(unsigned int size) {
 #endif
 
     buffer->size = size;
+    buffer->seek_pos = -1;
+    buffer->seek_enabled = 1; 
 
     if(size == 0) {
         buffer->data = 0;
@@ -61,9 +63,11 @@ struct ftr_io_buffer * ftr_create_buffer(unsigned int size) {
 void ftr_write_bytes(struct ftr_io_buffer * buffer, const ftr_u8 * bytes, 
         ftr_u64 len, ftr_u64 pos) {
 
-    ftr_s64 new_alloc_size = ((ftr_s64)pos + (ftr_s64)len) - (ftr_s64)buffer->size;
+    ftr_s64 new_alloc_size = ((ftr_s64)pos + (ftr_s64)len) 
+        - (ftr_s64)buffer->size;
 
     if(new_alloc_size < 0) new_alloc_size = 0;
+
   
 #ifdef __cplusplus
     ftr_u8 * dat = (ftr_u8*)realloc(buffer->data, buffer->size + new_alloc_size);
@@ -77,6 +81,7 @@ void ftr_write_bytes(struct ftr_io_buffer * buffer, const ftr_u8 * bytes,
     memcpy(&buffer->data[pos], bytes, len); 
 
     buffer->size += len;
+
 }
 
 void ftr_read_bytes(const struct ftr_io_buffer * buffer, ftr_u8 * bytes, 

@@ -5,6 +5,7 @@
 #include"ftr_util.h"
 #include"ftr_io_buffer.h"
 #include"ftr_broke_types.h"
+#include"ftr_io_buffer_seeker.h"
 
 #endif
 

@@ -167,6 +167,35 @@ int main(void) {
      * ftr_clear_buffer(buffer);
      */
 
+    {
+        struct ftr_io_buffer * buffer = ftr_create_buffer(4 * sizeof(ftr_u32));
+        struct ftr_io_buffer_seeker seeker;
+        ftr_init_seeker(buffer, &seeker, "wh"); // open to write and reverse
+
+        ftr_u32 ints[4] = { 100, 200, 300, 400 };
+
+        struct ftr_brokeu32 broke_ints[4];
+
+        for(int i = 0; i < 4; ++i) {
+            ftr_break_u32b(ints[i], &broke_ints[i]);
+            ftr_swrite_u32(&seeker, &broke_ints[i]);
+            printf((char*)broke_ints[i].bytes);
+        }
+
+        struct ftr_io_buffer_seeker seeker2;
+        ftr_init_seeker(buffer, &seeker2, "rh");
+
+        struct ftr_brokeu32 broke_ints2[4];
+        ftr_u32 ints2[4];
+
+        printf("\n\n");
+        for(int i = 0; i < 4; ++i) {
+            ftr_sread_u32(&seeker2, &broke_ints2[i]);
+            ints2[i] = ftr_assemble_u32b(&broke_ints2[i]);
+            printf("%i\n", ints[i]);
+        }
+    }
+
     return 0;
 }
 

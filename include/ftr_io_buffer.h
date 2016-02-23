@@ -41,6 +41,10 @@ struct FTR_API ftr_io_buffer {
 
     ftr_u64 size;
 
+    ftr_u64 seek_pos;
+
+    int seek_enabled;
+
 };
 
 struct FTR_API ftr_io_buffer * ftr_create_buffer(unsigned int size);
