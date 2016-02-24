@@ -41,8 +41,8 @@
 #endif
 
 #define FTR_VERSION_MAJOR 1
-#define FTR_VERSION_MINOR 0
-#define FTR_VERSION_PATCH 1
+#define FTR_VERSION_MINOR 1
+#define FTR_VERSION_PATCH 0
 
 #endif
 
