@@ -28,6 +28,7 @@
 #include<ftr_io_buffer_seeker.h>
 #include<ftr_io_buffer.h>
 #include<ftr_broke_types.h>
+#include<ftr_io_logger.h>
 #include<string.h>
 
 /*
@@ -56,6 +57,11 @@ int fmode(const char * modes, char mode) {
     }
 
     return 1;
+}
+
+void hlog(const struct ftr_io_buffer_seeker * seeker, const char * entry) {
+    if(seeker->buffer->logger != 0)
+        ftr_log_entry(seeker->buffer->logger, entry);
 }
 
 // ex: ftr_init_seeker( buffer, seeker, "rhe")
@@ -119,36 +125,44 @@ void ftr_swrite_bytes(struct ftr_io_buffer_seeker * seeker,
         ftr_write_bytes(seeker->buffer,bytes,size,seeker->seek_pos);
         seeker->seek_pos += size;
     }
+
+    hlog(seeker, "sw-bytes");
 }
 
 void ftr_swrite_u16(struct ftr_io_buffer_seeker * seeker,
         const struct ftr_brokeu16 * val) {
     ftr_swrite_bytes(seeker, val->bytes, sizeof(ftr_u16));
+    hlog(seeker, "sw-u16");
 }
 
 void ftr_swrite_u32(struct ftr_io_buffer_seeker * seeker,
         const struct ftr_brokeu32 * val) {
     ftr_swrite_bytes(seeker, val->bytes, sizeof(ftr_u32));
+    hlog(seeker, "sw-u32");
 }
 
 void ftr_swrite_u64(struct ftr_io_buffer_seeker * seeker,
         const struct ftr_brokeu64 * val) {
     ftr_swrite_bytes(seeker, val->bytes, sizeof(ftr_u64));
+    hlog(seeker, "sw-u64");
 }
 
 void ftr_swrite_s16(struct ftr_io_buffer_seeker * seeker,
         const struct ftr_brokes16 * val) {
     ftr_swrite_bytes(seeker, val->bytes, sizeof(ftr_s16));
+    hlog(seeker, "sw-s16");
 }
 
 void ftr_swrite_s32(struct ftr_io_buffer_seeker * seeker,
         const struct ftr_brokes32 * val) {
     ftr_swrite_bytes(seeker, val->bytes, sizeof(ftr_s32));
+    hlog(seeker, "sw-s32");
 }
 
 void ftr_swrite_s64(struct ftr_io_buffer_seeker * seeker,
         const struct ftr_brokes64 * val) {
     ftr_swrite_bytes(seeker, val->bytes, sizeof(ftr_s64));
+    hlog(seeker, "sw-s64");
 }
 
 // sread functions
@@ -174,35 +188,42 @@ void ftr_sread_bytes(struct ftr_io_buffer_seeker * seeker,
         ftr_read_bytes(seeker->buffer, bytes_target, size, 
                 seeker->seek_pos);
     }
+    hlog(seeker, "sr-bytes");
 }
 
 void ftr_sread_u16(struct ftr_io_buffer_seeker * seeker,
         struct ftr_brokeu16 * val) {
     ftr_sread_bytes(seeker, val->bytes, sizeof(ftr_u16));
+    hlog(seeker, "sr-u16");
 }
 
 void ftr_sread_u32(struct ftr_io_buffer_seeker * seeker,
         struct ftr_brokeu32 * val) {
     ftr_sread_bytes(seeker, val->bytes, sizeof(ftr_u32));
+    hlog(seeker, "sr-u32");
 }
 
 void ftr_sread_u64(struct ftr_io_buffer_seeker * seeker,
         struct ftr_brokeu64 * val) {
     ftr_sread_bytes(seeker, val->bytes, sizeof(ftr_u64));
+    hlog(seeker, "sr-u64");
 }
 
 void ftr_sread_s16(struct ftr_io_buffer_seeker * seeker,
         struct ftr_brokes16 * val) {
     ftr_sread_bytes(seeker, val->bytes, sizeof(ftr_s16));
+    hlog(seeker, "sr-s16");
 }
 
 void ftr_sread_s32(struct ftr_io_buffer_seeker * seeker,
         struct ftr_brokes32 * val) {
     ftr_sread_bytes(seeker, val->bytes, sizeof(ftr_s32));
+    hlog(seeker, "sr-s32");
 }
 
 void ftr_sread_s64(struct ftr_io_buffer_seeker * seeker,
         struct ftr_brokes64 * val) {
     ftr_sread_bytes(seeker, val->bytes, sizeof(ftr_s64));
+    hlog(seeker, "sr-s64");
 }
 

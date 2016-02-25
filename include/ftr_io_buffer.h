@@ -28,12 +28,13 @@
 #ifndef ftr_io_buffer_h
 #define ftr_io_buffer_h
 
+#include"ftr_broke_types.h"
+#include"ftr_config.h"
+#include<ftr_io_logger.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include"ftr_broke_types.h"
-#include"ftr_config.h"
 
 struct FTR_API ftr_io_buffer {
 
@@ -44,6 +45,8 @@ struct FTR_API ftr_io_buffer {
     ftr_u64 seek_pos;
 
     int seek_enabled;
+
+    struct ftr_io_logger * logger;
 
 };
 
@@ -58,6 +61,11 @@ void FTR_API ftr_read_bytes(const struct ftr_io_buffer * buffer, ftr_u8 * bytes,
 void FTR_API ftr_clear_buffer(struct ftr_io_buffer * buffer);
 
 void FTR_API ftr_free_buffer(struct ftr_io_buffer * buffer);
+
+void FTR_API ftr_bind_logger(struct ftr_io_buffer * buffer, 
+        struct ftr_io_logger * logger);
+
+void __ftr_hlog(const struct ftr_io_buffer * buffer, const char * entry);
 
 // Specialized write functions
 /*******************************/

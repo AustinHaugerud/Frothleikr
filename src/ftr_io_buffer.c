@@ -100,6 +100,19 @@ void ftr_free_buffer(struct ftr_io_buffer * buffer) {
     free(buffer);
 }
 
+void ftr_bind_logger(struct ftr_io_buffer * buffer,
+        struct ftr_io_logger * logger) {
+    buffer->logger = logger;
+}
+
+void __ftr_hlog(const struct ftr_io_buffer * buffer, const char * entry) {
+
+    if(!buffer->logger)
+        return;
+
+    ftr_log_entry(buffer->logger, entry);
+}
+
 // Specialized write functions
 /*********************************/
 
@@ -108,16 +121,19 @@ void ftr_free_buffer(struct ftr_io_buffer * buffer) {
 void ftr_write_u16(struct ftr_io_buffer * buffer, const struct ftr_brokeu16 * val, 
         ftr_u64 pos) {
     ftr_write_bytes(buffer, val->bytes, sizeof(ftr_u16), pos);
+    __ftr_hlog(buffer, "w-u16");
 }
 
 void ftr_write_u32(struct ftr_io_buffer * buffer, const struct ftr_brokeu32 * val, 
         ftr_u64 pos) {
     ftr_write_bytes(buffer, val->bytes, sizeof(ftr_u32), pos);
+    __ftr_hlog(buffer, "w-u32");
 }
 
 void ftr_write_u64(struct ftr_io_buffer * buffer, const struct ftr_brokeu64 * val, 
         ftr_u64 pos) {
     ftr_write_bytes(buffer, val->bytes, sizeof(ftr_u64), pos);
+    __ftr_hlog(buffer, "w-u64");
 }
 
 // Signed
@@ -125,16 +141,19 @@ void ftr_write_u64(struct ftr_io_buffer * buffer, const struct ftr_brokeu64 * va
 void ftr_write_s16(struct ftr_io_buffer * buffer, const struct ftr_brokes16 * val, 
         ftr_u64 pos) {
     ftr_write_bytes(buffer, val->bytes, sizeof(ftr_s16), pos);
+    __ftr_hlog(buffer, "w-s16");
 }
 
 void ftr_write_s32(struct ftr_io_buffer * buffer, const struct ftr_brokes32 * val, 
         ftr_u64 pos) {
     ftr_write_bytes(buffer, val->bytes, sizeof(ftr_s32), pos);
+    __ftr_hlog(buffer, "w-s32");
 }
 
 void ftr_write_s64(struct ftr_io_buffer * buffer, const struct ftr_brokes64 * val, 
         ftr_u64 pos) {
     ftr_write_bytes(buffer, val->bytes, sizeof(ftr_s64), pos);
+    __ftr_hlog(buffer, "w-s64");
 }
 
 /******************************/
@@ -146,16 +165,19 @@ void ftr_write_s64(struct ftr_io_buffer * buffer, const struct ftr_brokes64 * va
 void ftr_read_u16(const struct ftr_io_buffer *buffer, struct ftr_brokeu16 *target, 
         ftr_u64 pos) {
     ftr_read_bytes(buffer, target->bytes, sizeof(ftr_u16), pos);
+    __ftr_hlog(buffer, "r-u16");
 }
 
 void ftr_read_u32(const struct ftr_io_buffer *buffer, struct ftr_brokeu32 *target, 
         ftr_u64 pos) {
     ftr_read_bytes(buffer, target->bytes, sizeof(ftr_u32), pos);
+    __ftr_hlog(buffer, "r-u32");
 }
 
 void ftr_read_u64(const struct ftr_io_buffer *buffer, struct ftr_brokeu64 *target, 
         ftr_u64 pos) {
     ftr_read_bytes(buffer, target->bytes, sizeof(ftr_u64), pos);
+    __ftr_hlog(buffer, "r-u64");
 }
 
 // Signed
@@ -163,16 +185,19 @@ void ftr_read_u64(const struct ftr_io_buffer *buffer, struct ftr_brokeu64 *targe
 void ftr_read_s16(const struct ftr_io_buffer *buffer, struct ftr_brokes16 *target, 
         ftr_u64 pos) {
     ftr_read_bytes(buffer, target->bytes, sizeof(ftr_s16), pos);
+    __ftr_hlog(buffer, "r-s16");
 }
 
 void ftr_read_s32(const struct ftr_io_buffer *buffer, struct ftr_brokes32 *target, 
         ftr_u64 pos) {
     ftr_read_bytes(buffer, target->bytes, sizeof(ftr_s32), pos);
+    __ftr_hlog(buffer, "r-s32");
 }
 
 void ftr_read_s64(const struct ftr_io_buffer *buffer, struct ftr_brokes64 *target, 
         ftr_u64 pos) {
     ftr_read_bytes(buffer, target->bytes, sizeof(ftr_s64), pos);
+    __ftr_hlog(buffer, "r-s64");
 }
 
 /****************************/

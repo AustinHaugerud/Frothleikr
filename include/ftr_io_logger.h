@@ -24,25 +24,38 @@
  * For more information, please refer to <http://unlicense.org/>
  */
 
+#ifndef ftr_io_logger_h
+#define ftr_io_logger_h
 
-#ifndef ftr_config_h
-#define ftr_config_h
+#include<ftr_config.h>
+#include<ftr_types.h>
 
-#if defined(_WIN32) || defined(__WIN32__)
-
-    #if defined(FTR_EXPORT)
-        #define FTR_API __declspec(dllexport)
-    #else
-        #define FTR_API __declspec(dllimport)
-    #endif
-
-#elif defined(linux) || defined(__linux)
-    #define FTR_API
+#ifdef __cplusplus
+extern "C" {
 #endif
 
-#define FTR_VERSION_MAJOR 1
-#define FTR_VERSION_MINOR 2
-#define FTR_VERSION_PATCH 0
+struct FTR_API ftr_io_log_entry {
+    char * entry_name;
+};
+
+struct FTR_API ftr_io_logger { 
+    ftr_u64 size;
+    struct ftr_io_log_entry * entries;
+};
+ 
+struct FTR_API ftr_io_logger * ftr_create_logger(void);
+
+void FTR_API ftr_free_logger(struct ftr_io_logger * logger);
+
+void FTR_API ftr_log_entry(struct ftr_io_logger * logger, const char * name);
+
+void FTR_API ftr_compress_log(struct ftr_io_logger * logger);
+
+void __ftr_size_log_range(struct ftr_io_logger * logger);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

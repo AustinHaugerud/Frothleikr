@@ -170,7 +170,9 @@ int main(void) {
     {
         struct ftr_io_buffer * buffer = ftr_create_buffer(4 * sizeof(ftr_u32));
         struct ftr_io_buffer_seeker seeker;
+        struct ftr_io_logger * logger = ftr_create_logger();
         ftr_init_seeker(buffer, &seeker, "wh"); // open to write and reverse
+        ftr_bind_logger(buffer, logger);
 
         ftr_u32 ints[4] = { 100, 200, 300, 400 };
 
@@ -194,6 +196,17 @@ int main(void) {
             ints2[i] = ftr_assemble_u32b(&broke_ints2[i]);
             printf("%i\n", ints[i]);
         }
+
+        // Let's view what was logged
+
+        for(int i = 0; i < logger->size; ++i) {
+            if(logger->entries[i].entry_name) {
+                printf("Log[%i]\n", i);
+                printf(logger->entries[i].entry_name);
+            }
+        }
+
+        ftr_free_logger(logger);
     }
 
     return 0;
