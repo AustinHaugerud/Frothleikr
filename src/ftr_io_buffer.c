@@ -69,6 +69,9 @@ void ftr_write_bytes(struct ftr_io_buffer * buffer, const ftr_u8 * bytes,
 
     if(new_alloc_size < 0) new_alloc_size = 0;
 
+    if(new_alloc_size > 0)
+        printf("Allocazam\n");
+
   
 #ifdef __cplusplus
     ftr_u8 * dat = (ftr_u8*)realloc(buffer->data, buffer->size + new_alloc_size);
@@ -81,7 +84,7 @@ void ftr_write_bytes(struct ftr_io_buffer * buffer, const ftr_u8 * bytes,
  
     memcpy(&buffer->data[pos], bytes, len); 
 
-    buffer->size += len;
+    buffer->size += new_alloc_size;
 
 }
 

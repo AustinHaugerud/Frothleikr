@@ -1,12 +1,16 @@
 #include<frothleikr.h>
 #include<stdlib.h>
 #include<stdio.h>
+#include<stdint.h>
+#include<inttypes.h>
 
 int main() {
 
-    const ftr_u64 buffer_size = 1000;
+    const ftr_u64 buffer_size = 10000;
 
     { 
+        printf("Pred File Size: %i", buffer_size * sizeof(ftr_u32));
+
         ftr_u32 * integers = malloc(sizeof(ftr_u32) * buffer_size);
 
         struct ftr_io_buffer * buffer = ftr_create_buffer(buffer_size * sizeof(ftr_u32));
@@ -23,6 +27,7 @@ int main() {
 
         FILE * f = fopen("out.bin","w");
 
+        printf("Writing... %" PRIu64 "\n", buffer->size);
         fwrite(buffer->data, buffer->size,1,f);
 
         free(integers);
@@ -44,7 +49,7 @@ int main() {
             struct ftr_brokeu32 bu32;
             ftr_sread_u32(&seeker, &bu32);
             integers[i] = ftr_assemble_u32b(&bu32);
-            printf("%i\n",integers[i]);
+            //printf("%i\n",integers[i]);
         }
 
         free(integers);
