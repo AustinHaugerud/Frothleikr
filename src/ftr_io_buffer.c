@@ -26,6 +26,7 @@
 
 
 #include<ftr_io_buffer.h>
+#include<ftr_io_buffer_seeker.h>
 #include<stdlib.h>
 #include<stdint.h>
 #include<stdio.h>

@@ -36,10 +36,12 @@ extern "C" {
 
 struct FTR_API ftr_io_log_entry {
     char * entry_name;
+    ftr_u64 range;
 };
 
 struct FTR_API ftr_io_logger { 
     ftr_u64 size;
+    ftr_u64 alloc_size;
     struct ftr_io_log_entry * entries;
 };
  
@@ -50,8 +52,6 @@ void FTR_API ftr_free_logger(struct ftr_io_logger * logger);
 void FTR_API ftr_log_entry(struct ftr_io_logger * logger, const char * name);
 
 void FTR_API ftr_compress_log(struct ftr_io_logger * logger);
-
-void __ftr_size_log_range(struct ftr_io_logger * logger);
 
 #ifdef __cplusplus
 }

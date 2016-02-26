@@ -46,7 +46,7 @@ struct FTR_API ftr_io_buffer {
 
     int seek_enabled;
 
-    struct ftr_io_logger * logger;
+    struct ftr_io_logger * logger; 
 
 };
 
