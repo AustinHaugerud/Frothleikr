@@ -28,6 +28,7 @@
 #define ftr_archive_h
 
 #include<ftr_config.h>
+#include<ftr_types.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -38,9 +39,11 @@ struct ftr_io_buffer_seeker;
 
 struct FTR_API ftr_archive {
 
-    void (*archive_write)(struct ftr_io_buffer * buffer, void * parent);
+    void (*archive_write)(struct ftr_io_buffer * buffer, void * parent,
+            ftr_u64 pos);
 
-    void (*archive_read)(struct ftr_io_buffer * buffer, void * parent);
+    void (*archive_read)(struct ftr_io_buffer * buffer, void * parent,
+            ftr_u64 pos);
 
     void (*archive_swrite)(struct ftr_io_buffer_seeker * seeker, void * parent);
 
@@ -50,10 +53,10 @@ struct FTR_API ftr_archive {
 };
 
 void FTR_API ftr_archive_bind_write(struct ftr_archive * archive
-        ,void (*func)(struct ftr_io_buffer * buffer,void * parent));
+        ,void (*func)(struct ftr_io_buffer * buffer,void * parent,ftr_u64));
 
 void FTR_API ftr_archive_bind_read(struct ftr_archive * archive,
-        void (*func)(struct ftr_io_buffer * buffer,void * parent));
+        void (*func)(struct ftr_io_buffer * buffer,void * parent,ftr_u64));
 
 void FTR_API ftr_archive_bind_swrite(struct ftr_archive * archive,
         void (*func)(struct ftr_io_buffer_seeker * seeker, void *parent));
@@ -62,10 +65,10 @@ void FTR_API ftr_archive_bind_sread(struct ftr_archive * archive,
         void (*func)(struct ftr_io_buffer_seeker * seeker, void * parent));
 
 void FTR_API ftr_write(struct ftr_io_buffer * buffer,
-        struct ftr_archive * archive);
+        struct ftr_archive * archive, ftr_u64 pos);
 
 void FTR_API ftr_read(struct ftr_io_buffer * buffer,
-        struct ftr_archive * archive);
+        struct ftr_archive * archive, ftr_u64 pos);
 
 void FTR_API ftr_swrite(struct ftr_io_buffer_seeker * seeker,
         struct ftr_archive * archive);

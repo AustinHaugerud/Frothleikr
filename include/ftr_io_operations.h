@@ -114,15 +114,15 @@ float FTR_API ftr_unpack_float_u32(ftr_u32 val);
  * Pack floating point value into unsigned integer, good at preserving 
  * precision for floats and doubles
  */
-ftr_u64  FTR_API __ftr_pack_IEEE754(long double val, unsigned bits, unsigned expbits);
+ftr_u64  FTR_API ftr_pack_IEEE754(long double val, unsigned bits, unsigned expbits);
 
-long double FTR_API __ftr_unpack_IEEE754(ftr_u64 val, unsigned bits, unsigned expbits);
+long double FTR_API ftr_unpack_IEEE754(ftr_u64 val, unsigned bits, unsigned expbits);
 
-#define ftr_pack_double_u32(val) (__ftr_pack_IEEE754((val), 32, 8))
-#define ftr_pack_double_u64(val) (__ftr_pack_IEEE754((val), 64, 11))
+#define ftr_pack_double_u32(val) (ftr_pack_IEEE754((val), 32, 8))
+#define ftr_pack_double_u64(val) (ftr_pack_IEEE754((val), 64, 11))
 
-#define ftr_unpack_double_u32(val) (__ftr_unpack_IEEE754((val), 32, 8))
-#define ftr_unpack_double_u64(val) (__ftr_unpack_IEEE754((val), 64, 11)) 
+#define ftr_unpack_double_u32(val) (ftr_unpack_IEEE754((val), 32, 8))
+#define ftr_unpack_double_u64(val) (ftr_unpack_IEEE754((val), 64, 11)) 
 
 #ifdef __cplusplus
 }

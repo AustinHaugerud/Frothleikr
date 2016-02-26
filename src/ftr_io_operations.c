@@ -353,7 +353,7 @@ float ftr_unpack_float_u32(ftr_u32 val) {
     return uval;
 }
 
-ftr_u64 __ftr_pack_IEEE754(long double val, unsigned bits, unsigned expbits) {
+ftr_u64 ftr_pack_IEEE754(long double val, unsigned bits, unsigned expbits) {
     long double fnorm;
     int shift;
     long long sign, exp, significand;
@@ -392,7 +392,7 @@ ftr_u64 __ftr_pack_IEEE754(long double val, unsigned bits, unsigned expbits) {
     return (sign << (bits-1)) | (exp << (bits - expbits - 1)) | significand;
 }
 
-long double __ftr_unpack_IEEE754(ftr_u64 val, unsigned bits, unsigned expbits) {
+long double ftr_unpack_IEEE754(ftr_u64 val, unsigned bits, unsigned expbits) {
     long double result;
     long long shift;
     unsigned bias;

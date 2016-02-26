@@ -29,12 +29,14 @@
 #include<ftr_io_buffer_seeker.h>
 
 void ftr_archive_bind_write(struct ftr_archive * archive,
-        void (*func)(struct ftr_io_buffer * buffer,void * parent)) {
+        void (*func)(struct ftr_io_buffer * buffer,void * parent,
+            ftr_u64 pos)) {
     archive->archive_write = func;
 }
 
 void ftr_archive_bind_read(struct ftr_archive * archive,
-        void (*func)(struct ftr_io_buffer * buffer, void * parent)) {
+        void (*func)(struct ftr_io_buffer * buffer, void * parent,
+            ftr_u64 pos)) {
     archive->archive_read = func;
 }
 
@@ -49,13 +51,13 @@ void ftr_archive_bind_sread(struct ftr_archive * archive,
 }
 
 void ftr_write(struct ftr_io_buffer * buffer,
-        struct ftr_archive * archive) {
-    archive->archive_write(buffer, archive->parent);
+        struct ftr_archive * archive, ftr_u64 pos) {
+    archive->archive_write(buffer, archive->parent, pos);
 }
 
 void ftr_read(struct ftr_io_buffer * buffer,
-        struct ftr_archive * archive) {
-    archive->archive_read(buffer, archive->parent);
+        struct ftr_archive * archive, ftr_u64 pos) {
+    archive->archive_read(buffer, archive->parent, pos);
 }
 
 void ftr_swrite(struct ftr_io_buffer_seeker * seeker,
