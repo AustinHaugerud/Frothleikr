@@ -10,4 +10,5 @@ add_library(Frothleikr ${FTR_SOURCE} ${FTR_HEADERS})
 include_directories(include)
 
 add_subdirectory(examples)
+add_subdirectory(tests)
 

@@ -187,6 +187,7 @@ void ftr_sread_bytes(struct ftr_io_buffer_seeker * seeker,
     else {
         ftr_read_bytes(seeker->buffer, bytes_target, size, 
                 seeker->seek_pos);
+        seeker->seek_pos += size;
     }
     hlog(seeker, "sr-bytes");
 }
