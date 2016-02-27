@@ -28,8 +28,8 @@
 #ifndef ftr_io_buffer_h
 #define ftr_io_buffer_h
 
-#include"ftr_broke_types.h"
-#include"ftr_config.h"
+#include<ftr_broke_types.h>
+#include<ftr_config.h>
 #include<ftr_io_logger.h>
 
 #ifdef __cplusplus

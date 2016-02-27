@@ -28,12 +28,12 @@
 #ifndef ftr_io_buffer_seeker_h
 #define ftr_io_buffer_seeker_h
 
+#include<ftr_types.h>
+#include<ftr_config.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include<ftr_types.h>
-#include<ftr_config.h>
 
 struct ftr_io_buffer;
 

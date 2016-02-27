@@ -28,11 +28,11 @@
 #ifndef ftr_io_operations_h
 #define ftr_io_operations_h
 
+#include<ftr_broke_types.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include"ftr_broke_types.h"
 
 // UNSIGNED
 /***********************************************/

@@ -28,12 +28,12 @@
 #ifndef ftr_broke_types_h
 #define ftr_broke_types_h
 
+#include<ftr_config.h>
+#include<ftr_types.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include"ftr_config.h"
-#include"ftr_types.h"
 
 // UNSIGNED
 
