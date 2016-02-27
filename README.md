@@ -20,7 +20,7 @@ What It Does Do
 
 - Easily create portable in memory serializations of IEEE754 floating point types with your choice of endianness
 
-- Easily store your serialized data into in memory buffers
+- Easily store your serialized data into memory buffers
 
 What It Does NOT Do
 --------------------
