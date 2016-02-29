@@ -52,28 +52,28 @@ struct FTR_API ftr_archive {
     void * parent;
 };
 
-void FTR_API ftr_archive_bind_write(struct ftr_archive * archive
+FTR_API void ftr_archive_bind_write(struct ftr_archive * archive
         ,void (*func)(struct ftr_io_buffer * buffer,void * parent,ftr_u64));
 
-void FTR_API ftr_archive_bind_read(struct ftr_archive * archive,
+FTR_API void ftr_archive_bind_read(struct ftr_archive * archive,
         void (*func)(struct ftr_io_buffer * buffer,void * parent,ftr_u64));
 
-void FTR_API ftr_archive_bind_swrite(struct ftr_archive * archive,
+FTR_API void  ftr_archive_bind_swrite(struct ftr_archive * archive,
         void (*func)(struct ftr_io_buffer_seeker * seeker, void *parent));
 
-void FTR_API ftr_archive_bind_sread(struct ftr_archive * archive,
+FTR_API void ftr_archive_bind_sread(struct ftr_archive * archive,
         void (*func)(struct ftr_io_buffer_seeker * seeker, void * parent));
 
-void FTR_API ftr_write(struct ftr_io_buffer * buffer,
+FTR_API void ftr_write(struct ftr_io_buffer * buffer,
         struct ftr_archive * archive, ftr_u64 pos);
 
-void FTR_API ftr_read(struct ftr_io_buffer * buffer,
+FTR_API void ftr_read(struct ftr_io_buffer * buffer,
         struct ftr_archive * archive, ftr_u64 pos);
 
-void FTR_API ftr_swrite(struct ftr_io_buffer_seeker * seeker,
+FTR_API void ftr_swrite(struct ftr_io_buffer_seeker * seeker,
         struct ftr_archive * archive);
 
-void FTR_API ftr_sread(struct ftr_io_buffer_seeker * seeker,
+FTR_API void tr_sread(struct ftr_io_buffer_seeker * seeker,
         struct ftr_archive * archive);
 
 #ifdef __cplusplus

@@ -45,13 +45,13 @@ struct FTR_API ftr_io_logger {
     struct ftr_io_log_entry * entries;
 };
  
-struct FTR_API ftr_io_logger * ftr_create_logger(void);
+FTR_API struct ftr_io_logger * ftr_create_logger(void);
 
-void FTR_API ftr_free_logger(struct ftr_io_logger * logger);
+FTR_API void ftr_free_logger(struct ftr_io_logger * logger);
 
-void FTR_API ftr_log_entry(struct ftr_io_logger * logger, const char * name);
+FTR_API void ftr_log_entry(struct ftr_io_logger * logger, const char * name);
 
-void FTR_API ftr_compress_log(struct ftr_io_logger * logger);
+FTR_API void ftr_compress_log(struct ftr_io_logger * logger);
 
 #ifdef __cplusplus
 }

@@ -41,14 +41,14 @@ struct FTR_API ftr_brokeu16 {
     ftr_u8 bytes[2];
 };
 
-void FTR_API ftr_copy_brokeu16(const struct ftr_brokeu16 * source,
+FTR_API void ftr_copy_brokeu16(const struct ftr_brokeu16 * source,
         struct ftr_brokeu16 * target);
 
-struct ftr_brokeu32 {
+struct FTR_API ftr_brokeu32 {
     ftr_u8 bytes[4];
 };
 
-void FTR_API ftr_copy_brokeu32(const struct ftr_brokeu32 * source, 
+FTR_API void ftr_copy_brokeu32(const struct ftr_brokeu32 * source, 
         struct ftr_brokeu32 * target);
 
 struct FTR_API ftr_brokeu64 {
@@ -64,21 +64,21 @@ struct FTR_API ftr_brokes16 {
     ftr_u8 bytes[2];
 };
 
-void FTR_API ftr_copy_brokes16(const struct ftr_brokes16 * source, 
+FTR_API void ftr_copy_brokes16(const struct ftr_brokes16 * source, 
         struct ftr_brokes16 * target);
 
 struct FTR_API ftr_brokes32 {
     ftr_u8 bytes[4];
 };
 
-void FTR_API ftr_copy_brokes32(const struct ftr_brokes32 * source, 
+FTR_API void ftr_copy_brokes32(const struct ftr_brokes32 * source, 
         struct ftr_brokes32 * target);
 
 struct FTR_API ftr_brokes64 {
     ftr_u8 bytes[8];
 };
 
-void FTR_API ftr_copy_brokes64(const struct ftr_brokes64 * source, 
+FTR_API void ftr_copy_brokes64(const struct ftr_brokes64 * source, 
         struct ftr_brokes64 * target);
 
 #ifdef __cplusplus

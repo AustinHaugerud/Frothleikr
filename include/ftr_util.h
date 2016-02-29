@@ -33,9 +33,9 @@
 extern "C" {
 #endif
 
-int FTR_API ftr_is_bendian(void);
+FTR_API int ftr_is_bendian(void);
 
-int FTR_API ftr_is_lendian(void);
+FTR_API int ftr_is_lendian(void);
 
 #ifdef __cplusplus
 }

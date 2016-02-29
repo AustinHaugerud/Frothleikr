@@ -62,62 +62,62 @@ struct FTR_API ftr_io_buffer_seeker {
     ftr_seek_base base;
 };
 
-void FTR_API ftr_init_seeker(struct ftr_io_buffer * buffer,
+FTR_API void ftr_init_seeker(struct ftr_io_buffer * buffer,
         struct ftr_io_buffer_seeker * seeker, 
         const char * modes);
 
-void FTR_API ftr_close_seeker(struct ftr_io_buffer_seeker *seeker);
+FTR_API void ftr_close_seeker(struct ftr_io_buffer_seeker *seeker);
 
-void FTR_API ftr_reset_seek_pos(struct ftr_io_buffer_seeker * seeker, 
+FTR_API void ftr_reset_seek_pos(struct ftr_io_buffer_seeker * seeker, 
         ftr_seek_base seek_base,
         ftr_u64 pos);
 
 // swrite functions
 
-void FTR_API ftr_swrite_bytes(struct ftr_io_buffer_seeker * seeker, 
+FTR_API void ftr_swrite_bytes(struct ftr_io_buffer_seeker * seeker, 
         const ftr_u8 * bytes,
         ftr_u64 size);
 
-void FTR_API ftr_swrite_u16(struct ftr_io_buffer_seeker * seeker,
+FTR_API void ftr_swrite_u16(struct ftr_io_buffer_seeker * seeker,
         const struct ftr_brokeu16 * val);
 
-void FTR_API ftr_swrite_u32(struct ftr_io_buffer_seeker * seeker,
+FTR_API void ftr_swrite_u32(struct ftr_io_buffer_seeker * seeker,
         const struct ftr_brokeu32 * val);
 
-void FTR_API ftr_swrite_u64(struct ftr_io_buffer_seeker * seeker,
+FTR_API void ftr_swrite_u64(struct ftr_io_buffer_seeker * seeker,
         const struct ftr_brokeu64 * val);
 
-void FTR_API ftr_swrite_s16(struct ftr_io_buffer_seeker * seeker,
+FTR_API void ftr_swrite_s16(struct ftr_io_buffer_seeker * seeker,
         const struct ftr_brokes16 * val);
 
-void FTR_API ftr_swrite_s32(struct ftr_io_buffer_seeker * seeker,
+FTR_API void ftr_swrite_s32(struct ftr_io_buffer_seeker * seeker,
         const struct ftr_brokes32 * val);
 
-void FTR_API ftr_swrite_s64(struct ftr_io_buffer_seeker * seeker,
+FTR_API void ftr_swrite_s64(struct ftr_io_buffer_seeker * seeker,
         const struct ftr_brokes64 * val);
 
 // sread functions
 
-void FTR_API ftr_sread_bytes(struct ftr_io_buffer_seeker * seeker, 
+FTR_API void ftr_sread_bytes(struct ftr_io_buffer_seeker * seeker, 
         ftr_u8 * bytes_target,
         ftr_u64 size);
 
-void FTR_API ftr_sread_u16(struct ftr_io_buffer_seeker * seeker, 
+FTR_API void ftr_sread_u16(struct ftr_io_buffer_seeker * seeker, 
         struct ftr_brokeu16 * target);
 
-void FTR_API ftr_sread_u32(struct ftr_io_buffer_seeker * seeker,
+FTR_API void ftr_sread_u32(struct ftr_io_buffer_seeker * seeker,
         struct ftr_brokeu32 * target);
 
-void FTR_API ftr_sread_u64(struct ftr_io_buffer_seeker * seeker,
+FTR_API void ftr_sread_u64(struct ftr_io_buffer_seeker * seeker,
         struct ftr_brokeu64 * target);
 
-void FTR_API ftr_sread_s16(struct ftr_io_buffer_seeker * seeker,
+FTR_API void ftr_sread_s16(struct ftr_io_buffer_seeker * seeker,
         struct ftr_brokes16 * target);
 
-void FTR_API ftr_sread_s32(struct ftr_io_buffer_seeker * seeker,
+FTR_API void ftr_sread_s32(struct ftr_io_buffer_seeker * seeker,
         struct ftr_brokes32 * target);
 
-void FTR_API ftr_sread_s64(struct ftr_io_buffer_seeker * seeker,
+FTR_API void ftr_sread_s64(struct ftr_io_buffer_seeker * seeker,
         struct ftr_brokes64 * target);
 
 #ifdef __cplusplus
