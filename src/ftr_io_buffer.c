@@ -43,6 +43,7 @@ struct ftr_io_buffer * ftr_create_buffer(unsigned int size) {
         = malloc(sizeof(struct ftr_io_buffer));
 #endif
 
+    buffer->logger = NULL;
     buffer->size = size;
     buffer->seek_pos = -1;
     buffer->seek_enabled = 1; 
